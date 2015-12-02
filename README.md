@@ -65,12 +65,14 @@ Happy testing!
 
 ## TODO
 
-* Suite summaries.
+* Suite summaries
 * Flexible reporting (e.g. dots `...F...F...***...`)
 * Code cleanup
-* Better assertions, `assert_equal` with descriptive failure output, etc.
+* Better assertions, `assert_equal` with descriptive failure output, etc
 * `xit`, `it_only`, `xdescribe`, etc. support
 * Config options (timeout, show pending)
+* Probably should switch to the executing volume prior to running spec bodies
+* `before__each`, `after_each` hooks
 * Reboot-tolerant spec bodies? Expose some interface via which specs could use
   kuniverse reverts for complex things?
 

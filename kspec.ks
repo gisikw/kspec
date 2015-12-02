@@ -119,7 +119,7 @@ function exec_node {
 
   if node:haskey("function") {
     local result is execute_spec(node, file, executor).
-    if result = PASSING print indent + name.
+    if result = PASSING print indent + "[-] " + name.
     if result = FAILING print indent + "[X] " + name.
     if result = PENDING print indent + "[*] " + name.
   } else {

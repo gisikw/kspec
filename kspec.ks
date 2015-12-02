@@ -85,7 +85,7 @@ function execute_spec {
 
   switch to executor:volume.
   log "switch to 0."            to "kspec_boot.ks".
-  log "run kspec_exec."         to "kspec_boot.ks".
+  log "run kspec_runtime."      to "kspec_boot.ks".
   log "run " + sourcefile + "." to "kspec_boot.ks".
   log "clearscreen."            to "kspec_boot.ks".
   log node["function"] + "()."  to "kspec_boot.ks".

@@ -1,1 +1,1 @@
-RUN kspec("lib_kspec_spec").
+RUN kspec. kspec("demo_spec").

@@ -6,7 +6,9 @@ BDD-style test framework for KerboScript, a la RSpec, Jasmine, Mocha, etc.
 
 The ship must have at least 2 CPUs, and an active connection to the archive
 volume. One CPU runs the individual tests in a sandboxed environment, and the
-other monitors the full suite.
+other monitors the full suite. Here's one example craft:
+
+![](https://www.dropbox.com/s/ajc16zy6sl4ycrw/Screenshot%202015-12-12%2019.45.43.png?dl=1)
 
 This is necessary so that the suite is able to continue if the body of your
 tests should happen to contain an error.

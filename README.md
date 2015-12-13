@@ -1,4 +1,4 @@
-# KSpec (WIP)
+# KSpec - A Test Framework for Kerbals!
 
 BDD-style test framework for KerboScript, a la RSpec, Jasmine, Mocha, etc.
 
@@ -16,63 +16,89 @@ tests should happen to contain an error.
 Here's an example KSpec spec file:
 
 ```
-describe("Some really cool thing I want to test").
-  it("should be incredibly awesome", "test_incredibly_awesome").
-    function test_incredibly_awesome {
-      run totally_awesome_lib.
-      assert(totally_awesome = true).
-    }
+describe("Enabled suite").
+  it("is not pending", "test_enabled").
+    function test_enabled { assert(true). }
   end.
+end.
 
-  context("if it's not awesome").
-    it("should fail", "test_not_awesome").
-      function test_not_awesome {
-        assert(false).
-      }
-    end
+xdescribe("Disabled suite").
+  it("is pending", "test_pending").
+    function test_pending { assert(true). }
   end.
+  describe("even nested").
+    it("is also pending", "test_also_pending").
+      function test_also_pending { assert(true). }
+    end.
+  end.
+end.
 
-  it("should have more specs", "test_more_specs").
-    function test_more_specs {
-      pending().
-    }
+describe("Failing spec").
+  it("fails", "test_failing").
+    function test_failing { assert(false). }
+  end.
+end.
+
+describe("Equality assertions").
+  it("shows helpful error messages", "test_equality").
+    function test_equality { assert_equal("foo", "bar"). }
+  end.
+end.
+
+describe("Erroring spec").
+  it("errors", "test_error").
+    function test_error { print 1/0. }
   end.
 end.
 ```
 
 ## Usage
 
-Assuming you wrote the previous example into `awesome_spec.ks`, you can run the
-spec via `RUN kspec("awesome_spec").` (you could also supply a list, e.g.
-`RUN kspec(list("file1","file2"))`. It will run each test in isolation on the
-second CPU, and report the results as they come in. Here's the output from that
-example.
+Assuming you wrote the previous example into `demo_spec.ks`, you can run the
+spec via `run kspec.ks. kspec("demo_spec").` (you could also supply a list, e.g.
+`run kspec. kspec(list("file1","file2"))`. It will run each test in isolation
+on the second CPU, and report the results as they come in. Here's the output
+from that example:
 
 ```
-===== awesome_spec =====
-Some really cool thing I want to test
-  should be incredibly awesome
-  if it's not awesome
-    [X] should fail
-  [*] should have more specs
+Enabled suite
+  [.] is not pending
+Disabled suite
+  [*] is pending
+  even nested
+    [*] is also pending
+Failing spec
+  [x] fails
+Equality assertions
+  [x] shows helpful error messages
+Erroring spec
+  [x] errors
+
+Finished in 5.52 seconds
+6 examples, 3 failures, 2 pending
+
+Failures:
+
+  1) Failing spec fails
+     Failure/Error: Expected false to be true
+
+  2) Equality assertions shows helpful error messages
+     Failure/Error: Expected foo to equal bar
+
+  3) Erroring spec errors
 ```
 
 ## Installation
 
-Provided you have KOS installed, you'll want to download `kspec.ks` and
-`kspec_runtime.ks` into your Ships/Script folder, and you should be good to go.
+Provided you have KOS installed, you'll want to download `kspec.ks` and into
+your Ships/Script folder, and you should be good to go.
+
 Happy testing!
 
 ## TODO
 
-* Suite summaries
 * Flexible reporting (e.g. dots `...F...F...***...`)
-* Code cleanup
-* Better assertions, `assert_equal` with descriptive failure output, etc
-* `xit`, `it_only`, `xdescribe`, etc. support
-* Config options (timeout, show pending)
-* Probably should switch to the executing volume prior to running spec bodies
-* `before__each`, `after_each` hooks
+* `it_only` support for quick debugging of a single test
 * Reboot-tolerant spec bodies? Expose some interface via which specs could use
   kuniverse reverts for complex things?
 

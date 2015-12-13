@@ -20,3 +20,15 @@ describe("Failing spec").
     function test_failing { assert(false). }
   end.
 end.
+
+describe("Equality assertions").
+  it("shows helpful error messages", "test_equality").
+    function test_equality { assert_equal("foo", "bar"). }
+  end.
+end.
+
+describe("Erroring spec").
+  it("errors", "test_error").
+    function test_error { print 1/0. }
+  end.
+end.

@@ -95,6 +95,18 @@ your Ships/Script folder, and you should be good to go.
 
 Happy testing!
 
+## Configuration
+
+In order to handle error cases, KSpec uses a five-second timeout for specs that
+may have failed. However, if you have a test body that takes longer, you can
+change this behavior before running the suite:
+
+```
+run kspec.
+set kspec_config["timeout"] to 15.
+kspec("my_spec").
+```
+
 ## TODO
 
 * Flexible reporting (e.g. dots `...F...F...***...`)

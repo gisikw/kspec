@@ -149,11 +149,15 @@ function kspec {
   if kspec_config[6]:length {
     print "Failures:". print " ".
     from { local j is 0. } until j = kspec_config[6]:length step { set j to j + 1. } do {
-      local text is "".
       local i is kspec_config[6][j].
+      local d is kspec_config[0][i][2].
+      local text is kspec_config[0][i][0].
       until 0 {
-        set text to kspec_config[0][i][0] + " " + text.
-        if kspec_config[0][i][2] = 1 break.
+        if kspec_config[0][i][2] < d {
+          set text to kspec_config[0][i][0] + " " + text.
+          set d to d - 1.
+          if kspec_config[0][i][2] = 1 break.
+        }
         set i to i - 1.
       }
       print "  " + (j+1) + ") " + text.

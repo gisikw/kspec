@@ -41,7 +41,7 @@ function kspec {
   local results is list("?","*",".","x").
   local l is lexicon().
   l:add("0",0).
-  local q is l:dump:substring(23, 1).
+  local q is l:dump:substring(22, 1).
   unset l.
 
   // Creates DSL functions for spec files (describe, it, etc), which append

@@ -1,0 +1,16 @@
+---
+name: kspec
+version: 0.1.0
+description: A BDD-style testing framework
+repository: https://github.com/gisikw/kspec.git
+homepage: https://github.com/gisikw/kspec
+keywords:
+  - BDD
+  - Testing
+author:
+  name: Kevin Gisi
+  email: kevin@kevingisi.com
+  web: https://cheerskevin.com
+license: MIT
+files:
+  - kspec.ks
